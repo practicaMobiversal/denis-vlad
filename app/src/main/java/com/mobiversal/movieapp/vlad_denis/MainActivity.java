@@ -15,6 +15,8 @@ public class MainActivity extends ParentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initClickListeners();
+
+        getSupportFragmentManager().beginTransaction().add(R.id.llfrag, new WatchedFragment(),"");
     }
     private void initClickListeners() {
         findViewById(R.id.Favorites).setOnClickListener(new View.OnClickListener() {
