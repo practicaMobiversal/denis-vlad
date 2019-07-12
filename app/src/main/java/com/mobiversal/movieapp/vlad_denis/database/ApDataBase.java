@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 import com.mobiversal.movieapp.vlad_denis.database.dao.MovieDao;
 import com.mobiversal.movieapp.vlad_denis.model.Movie;
 
-@Database(entities =  {Movie.class}, version = 1)
+@Database(entities =  {Movie.class}, version = 1, exportSchema = false)
 public abstract class ApDataBase extends RoomDatabase {
 
     private static ApDataBase instance;

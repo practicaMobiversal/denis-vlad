@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 
@@ -27,19 +28,20 @@ public class MainActivity extends ParentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initClickListeners();
+        splashScreenTransition();
 
-        getSupportFragmentManager().beginTransaction().add(R.id.llfrag, new WatchedFragment(), "");
+        //getSupportFragmentManager().beginTransaction().add(R.id.llfrag, new WatchedFragment(), "");
         //getMovies();
         getMoviesFromDataBase();
     }
 
     private void initClickListeners() {
-        findViewById(R.id.Favorites).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openSavedMoviesScreen();
-            }
-        });
+        //findViewById(R.id.Favorites).setOnClickListener(new View.OnClickListener() {
+          //  @Override
+          //  public void onClick(View view) {
+             //   openSavedMoviesScreen();
+           // }
+        //});
 
     }
 
@@ -79,7 +81,20 @@ public class MainActivity extends ParentActivity {
             Log.d(TAG, movie.getTitle());
         }
     }
-}
+    private void splashScreenTransition() {
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(new Intent(getApplicationContext(), PreferencesActivity.class));
+                finish();
+            }
+
+        }, 5000);
+    }
+
+    }
+
 
 
 
