@@ -4,18 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#002BFF"
+    android:background="#00ff7f"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:background="#000000"
-        android:text="@string/movieapp"
-        android:textColor="#F00"
+        android:text="MovieApp"
+        android:textColor="#D50000"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 import com.mobiversal.movieapp.vlad_denis.database.AppDataBase;
 import com.mobiversal.movieapp.vlad_denis.model.Keyword;
+import com.mobiversal.movieapp.vlad_denis.ui.DrawerActivity;
 
 public class PreferencesActivity extends AppCompatActivity {
 
@@ -17,6 +18,8 @@ public class PreferencesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
+        ActorOnClick();
+
     }
 
     private String getKeywords() {
@@ -51,7 +54,18 @@ public class PreferencesActivity extends AppCompatActivity {
                 //
                 //TODO: Move this outside of save function
                 saveKeywords(getKeywords());
-                Intent intent = new Intent (PreferencesActivity.this,MoviesActivity.class);
+                Intent intent = new Intent(PreferencesActivity.this, MoviesActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void ActorOnClick() {
+        findViewById(R.id.btn_actors).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(PreferencesActivity.this, DrawerActivity.class);
                 startActivity(intent);
             }
         });

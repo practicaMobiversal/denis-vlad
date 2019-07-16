@@ -1,6 +1,8 @@
 package com.mobiversal.movieapp.vlad_denis;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +14,8 @@ import com.mobiversal.movieapp.vlad_denis.Network.RequestManager;
 import com.mobiversal.movieapp.vlad_denis.Network.response.MoviesResponse;
 import com.mobiversal.movieapp.vlad_denis.database.AppDataBase;
 import com.mobiversal.movieapp.vlad_denis.model.Movie;
+import com.mobiversal.movieapp.vlad_denis.ui.FirstFragment;
+import com.mobiversal.movieapp.vlad_denis.ui.SecondFragment;
 
 import java.util.List;
 
@@ -27,9 +31,13 @@ public class MainActivity extends ParentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+
+
         initClickListeners();
         splashScreenTransition();
-
         //getSupportFragmentManager().beginTransaction().add(R.id.llfrag, new WatchedFragment(), "");
         //getMovies();
         getMoviesFromDataBase();
@@ -49,6 +57,8 @@ public class MainActivity extends ParentActivity {
         Intent intent = new Intent(this, SavedMoviesScreen.class);
         startActivity(intent);
     }
+
+
 
     private void getMovies() {
 
