@@ -6,27 +6,20 @@ import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
-@Entity(tableName = "actor")
+@Entity(tableName = "genre")
+public class Genre {
 
-    public class Actor {
-
-    @PrimaryKey
-    @ColumnInfo(name = "id")
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name="id")
+    @SerializedName("id")
     private int id;
-    @ColumnInfo(name = "name")
+    @SerializedName("name")
     private String name;
-    @SerializedName("profile_path")
-    @ColumnInfo(name = "imageview")
-    private String imageview;
 
-
-    public Actor(int id, String name, String imageview) {
+    public Genre(int id, String name) {
         this.id = id;
         this.name = name;
-        this.imageview = imageview;
-
     }
-
 
     public int getId() {
         return id;
@@ -43,15 +36,4 @@ import com.google.gson.annotations.SerializedName;
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getImageview() {
-        return imageview;
-    }
-
-    public void setImageview(String imageview) {
-       this.imageview = imageview;
-    }
-
-
 }
-

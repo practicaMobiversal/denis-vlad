@@ -1,5 +1,7 @@
 package com.mobiversal.movieapp.vlad_denis.Network;
 
+import com.mobiversal.movieapp.vlad_denis.Network.response.ActorsResponse;
+import com.mobiversal.movieapp.vlad_denis.Network.response.GenresResponse;
 import com.mobiversal.movieapp.vlad_denis.Network.response.MoviesResponse;
 
 import okhttp3.OkHttpClient;
@@ -39,5 +41,9 @@ public class RequestManager {
                 return apiClient.getTopRatedMovies(API_KEY);
             }
 
+    public Call<ActorsResponse> getPopularActors() {
+        return apiClient.getPopularActors(API_KEY);
+    }
+   public Call<GenresResponse> getGenres() {return apiClient.getGenres(API_KEY);}
 
 }

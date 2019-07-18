@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 import com.google.gson.annotations.SerializedName;
 @Entity(tableName = "movie")
 public class Movie {
-    @PrimaryKey
+     @PrimaryKey
      @ColumnInfo(name = "id")
     private long id;
 

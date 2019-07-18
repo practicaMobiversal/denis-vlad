@@ -14,6 +14,7 @@ import com.mobiversal.movieapp.vlad_denis.model.Keyword;
 import com.mobiversal.movieapp.vlad_denis.ui.DrawerActivity;
 import com.mobiversal.movieapp.vlad_denis.ui.actors.ActorsActivity;
 import com.mobiversal.movieapp.vlad_denis.ui.actors.ActorsAdapter;
+import com.mobiversal.movieapp.vlad_denis.ui.genres.GenresActivity;
 
 public class PreferencesActivity extends AppCompatActivity {
 
@@ -21,7 +22,9 @@ public class PreferencesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
+        DrawerActivityOnClick();
         openActors();
+        openGenres();
 
     }
 
@@ -54,6 +57,17 @@ public class PreferencesActivity extends AppCompatActivity {
             });
         };
 
+    private void openGenres() {
+        findViewById(R.id.genres).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PreferencesActivity.this, GenresActivity.class);
+                startActivity(intent);
+            }
+
+        });
+    };
+
 
     private void saveKeywords(String name) {
         Keyword keywordEmpty = new Keyword(name);
@@ -61,22 +75,22 @@ public class PreferencesActivity extends AppCompatActivity {
         Log.d(PreferencesActivity.class.getSimpleName(), name);
     }
 
-    private void saveOnClick() {
+//    private void saveOnClick() {
+//        findViewById(R.id.save_btn).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                //
+//                //TODO: Move this outside of save function
+//                saveKeywords(getKeywords());
+//                Intent intent = new Intent(PreferencesActivity.this, MoviesActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//    }
+
+    private void DrawerActivityOnClick() {
         findViewById(R.id.save_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                //
-                //TODO: Move this outside of save function
-                saveKeywords(getKeywords());
-                Intent intent = new Intent(PreferencesActivity.this, MoviesActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    private void ActorOnClick() {
-        findViewById(R.id.btn_actors).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

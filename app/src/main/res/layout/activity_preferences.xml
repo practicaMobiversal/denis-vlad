@@ -7,6 +7,9 @@
     android:background="#BADA55"
     tools:context=".PreferencesActivity">
 
+
+
+
     <Button
         android:id="@+id/btn_actors"
         android:layout_width="300dp"
@@ -45,6 +48,7 @@
         android:id="@+id/preferences"
         android:layout_width="160dp"
         android:layout_height="35dp"
+        android:layout_marginTop="4dp"
         android:text="Preferences"
         android:textColor="#D50000"
         android:textColorHint="#C51162"
