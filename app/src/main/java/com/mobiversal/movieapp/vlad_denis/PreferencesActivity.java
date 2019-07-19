@@ -15,6 +15,7 @@ import com.mobiversal.movieapp.vlad_denis.ui.DrawerActivity;
 import com.mobiversal.movieapp.vlad_denis.ui.actors.ActorsActivity;
 import com.mobiversal.movieapp.vlad_denis.ui.actors.ActorsAdapter;
 import com.mobiversal.movieapp.vlad_denis.ui.genres.GenresActivity;
+import com.mobiversal.movieapp.vlad_denis.ui.movies.main.SavedMovies;
 
 public class PreferencesActivity extends AppCompatActivity {
 
@@ -94,7 +95,7 @@ public class PreferencesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(PreferencesActivity.this, DrawerActivity.class);
+                Intent intent = new Intent(PreferencesActivity.this, SavedMovies.class);
                 startActivity(intent);
             }
         });

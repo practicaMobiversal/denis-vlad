@@ -6,5 +6,9 @@
 
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+    <string name="title_activity_view_page">ViewPage</string>
+    <string name="tab_text_1">Favorites</string>
+    <string name="tab_text_2">Watched</string>
+    <string name="title_activity_saved_movies">SavedMoviesActivity</string>
 
 </resources>

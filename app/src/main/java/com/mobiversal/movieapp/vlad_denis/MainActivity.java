@@ -3,6 +3,7 @@ package com.mobiversal.movieapp.vlad_denis;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.PagerAdapter;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 
+import com.google.android.material.tabs.TabLayout;
 import com.mobiversal.movieapp.vlad_denis.Network.RequestManager;
 import com.mobiversal.movieapp.vlad_denis.Network.response.MoviesResponse;
 import com.mobiversal.movieapp.vlad_denis.database.AppDataBase;
@@ -31,9 +33,6 @@ public class MainActivity extends ParentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
 
 
         initClickListeners();

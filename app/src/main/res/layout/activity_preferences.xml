@@ -61,8 +61,6 @@
         android:id="@+id/save_btn"
         android:layout_width="86dp"
         android:layout_height="52dp"
-        android:clickable="false"
-        android:enabled="false"
         android:text="Save"
         android:textAllCaps="true"
         app:layout_constraintRight_toRightOf="parent"
