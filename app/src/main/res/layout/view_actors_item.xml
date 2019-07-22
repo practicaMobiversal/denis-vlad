@@ -20,7 +20,7 @@
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:text="Vin Benzina" />
+        tools:text="Vin Diesel" />
 
     <CheckBox
         android:id="@+id/checkBox"

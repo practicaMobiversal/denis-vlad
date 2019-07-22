@@ -1,10 +1,12 @@
 package com.mobiversal.movieapp.vlad_denis.ui.actors;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -66,6 +68,35 @@ public class ActorsAdapter extends RecyclerView.Adapter<ActorsAdapter.ActorViewH
             actorImageView = itemView.findViewById(R.id.iv_id);
             actorTextView = itemView.findViewById(R.id.tv_name);
             actorCheckBox = itemView.findViewById(R.id.checkBox);
+        }
+
+        public List<Actor> getActorChecked(){
+            return actors;
+        }
+
+        private void checkListener(Actor actor) {
+            actorCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    // TODO Auto-generated method stub
+
+                    if (isChecked) {
+                        getActor(actor);
+                        Log.d("Actor checked!", actor.getName());
+                    } else {
+                        actors.remove(actor);
+                        Log.d("Actor unchecked!", actor.getName());
+                    }
+
+                }
+
+            });
+        }
+
+        public List<Actor> getActor(Actor actor){
+            actors.add(actor);
+            return actors;
         }
 
 

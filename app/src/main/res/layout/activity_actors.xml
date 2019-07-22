@@ -4,13 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MoviesActivity"
+    tools:context=".ui.actors.ActorsActivity"
     android:background="@android:color/holo_green_light">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_actors"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:background="#151515"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toTopOf="@+id/rv_actors"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Acters"
+        app:titleMarginStart="20dp"
+        app:titleTextColor="#FFFF" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_actors"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        tools:listitems="@layout/view_actors_item">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_width="343dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginRight="11dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tb_actors"
+        tools:listitems="@layout/view_actors_item"></androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/save_actors_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:text="Save"
+        app:layout_constraintEnd_toEndOf="@+id/tb_actors"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

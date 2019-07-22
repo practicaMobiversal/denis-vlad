@@ -34,7 +34,7 @@ public class GenresActivity extends ParentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_genres2);
-        rvGenres = findViewById(R.id.rv_genres);
+        rvGenres = findViewById(R.id.rv_actors);
         setupRecycleView();
         getGenres();
     }

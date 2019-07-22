@@ -44,10 +44,10 @@ public class MainActivity extends ParentActivity {
 
     private void initClickListeners() {
         //findViewById(R.id.Favorites).setOnClickListener(new View.OnClickListener() {
-          //  @Override
-          //  public void onClick(View view) {
-             //   openSavedMoviesScreen();
-           // }
+        //  @Override
+        //  public void onClick(View view) {
+        //   openSavedMoviesScreen();
+        // }
         //});
 
     }
@@ -107,8 +107,5 @@ public class MainActivity extends ParentActivity {
         }, 5000);
     }
 
-    }
-
-
-
+}
 
