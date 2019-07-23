@@ -2,6 +2,7 @@ package com.mobiversal.movieapp.vlad_denis.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
@@ -16,9 +17,20 @@ public class Genre {
     @SerializedName("name")
     private String name;
 
+    @Ignore
+    private boolean selected;
+
     public Genre(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 
     public int getId() {

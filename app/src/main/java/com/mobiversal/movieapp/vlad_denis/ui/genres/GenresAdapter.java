@@ -1,10 +1,12 @@
 package com.mobiversal.movieapp.vlad_denis.ui.genres;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,12 +16,13 @@ import com.mobiversal.movieapp.vlad_denis.R;
 import com.mobiversal.movieapp.vlad_denis.model.Actor;
 import com.mobiversal.movieapp.vlad_denis.model.Genre;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GenresAdapter extends RecyclerView.Adapter<GenresAdapter.GenreViewHolder>{
 
     List<Genre> genres;
-    List<Genre> genressave;
+    List<Genre> genressave = new ArrayList<>();
 
     public GenresAdapter(List<Genre> genres) {
         this.genres = genres;
@@ -48,11 +51,11 @@ public class GenresAdapter extends RecyclerView.Adapter<GenresAdapter.GenreViewH
         return genres.size();
     }
 
-    public List<Genre> getGenressave() {
-        return genressave;
-    }
+        public List<Genre> getGenressave() {
+            return genressave;
+        }
 
-    class GenreViewHolder extends RecyclerView.ViewHolder {
+        class GenreViewHolder extends RecyclerView.ViewHolder {
 
         TextView genreTextView;
         CheckBox genreCheckBox;
@@ -61,12 +64,31 @@ public class GenresAdapter extends RecyclerView.Adapter<GenresAdapter.GenreViewH
             super(itemView);
 
             genreTextView = itemView.findViewById(R.id.tv_gen);
-            genreCheckBox = itemView.findViewById(R.id.checkBox);
+            genreCheckBox = itemView.findViewById(R.id.checkBox4);
         }
 
+            public void onBind(Genre genre){
+                genreTextView.setText(genre.getName());
+                genreCheckBox.setOnCheckedChangeListener(null);
+                genreCheckBox.setChecked(genre.isSelected());
+                checkListener(genre);
+            }
 
-        public void onBind(Genre genre){
-            genreTextView.setText(genre.getName());
+        private void checkListener(Genre genre) {
+            genreCheckBox.setOnCheckedChangeListener((compoundButton, isChecked) -> {
+                // TODO Auto-generate method stub
+
+                genre.setSelected(isChecked);
+
+                if (isChecked) {
+                    genressave.add(genre);
+                    Log.d("Genre checked",genre.getName());
+                } else {
+                    genressave.remove(genre);
+                    Log.d("Genre unchecked",genre.getName());
+                }
+            });
         }
+
     }
         }

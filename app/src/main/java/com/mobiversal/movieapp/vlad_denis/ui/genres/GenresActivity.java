@@ -39,6 +39,7 @@ public class GenresActivity extends ParentActivity {
         rvGenres = findViewById(R.id.rv_actors);
         setupRecycleView();
         getGenres();
+        getGenresOnClick();
     }
 
 
@@ -79,7 +80,7 @@ public class GenresActivity extends ParentActivity {
         });
     }
 
-     public void getActorsOnClick() {
+     public void getGenresOnClick() {
         findViewById(R.id.save_genres_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

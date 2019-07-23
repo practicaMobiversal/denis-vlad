@@ -2,6 +2,7 @@ package com.mobiversal.movieapp.vlad_denis.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
@@ -18,6 +19,8 @@ import com.google.gson.annotations.SerializedName;
     @SerializedName("profile_path")
     @ColumnInfo(name = "imageview")
     private String imageview;
+    @Ignore
+    private boolean selected;
 
 
     public Actor(int id, String name, String imageview) {
@@ -53,5 +56,12 @@ import com.google.gson.annotations.SerializedName;
     }
 
 
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
 }
 

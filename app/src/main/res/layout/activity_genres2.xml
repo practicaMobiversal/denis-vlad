@@ -37,7 +37,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tb_actors"
-        tools:listitems="@layout/view_actors_item"></androidx.recyclerview.widget.RecyclerView>
+        tools:listitems="@layout/view_genres_item">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <Button
         android:id="@+id/save_genres_btn"

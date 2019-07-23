@@ -17,6 +17,7 @@ public interface ActorDao {
 
     @Insert
     public long saveActor(Actor actor);
+
     @Query("DELETE FROM actor")
     public void deleteAll();
 }

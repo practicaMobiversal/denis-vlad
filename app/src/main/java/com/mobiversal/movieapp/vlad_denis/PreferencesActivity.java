@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.mobiversal.movieapp.vlad_denis.database.AppDataBase;
 import com.mobiversal.movieapp.vlad_denis.model.Actor;
+import com.mobiversal.movieapp.vlad_denis.model.Genre;
 import com.mobiversal.movieapp.vlad_denis.model.Keyword;
 import com.mobiversal.movieapp.vlad_denis.ui.DrawerActivity;
 import com.mobiversal.movieapp.vlad_denis.ui.actors.ActorsActivity;
@@ -17,13 +19,18 @@ import com.mobiversal.movieapp.vlad_denis.ui.actors.ActorsAdapter;
 import com.mobiversal.movieapp.vlad_denis.ui.genres.GenresActivity;
 import com.mobiversal.movieapp.vlad_denis.ui.movies.main.SavedMovies;
 
+import java.util.List;
+
 public class PreferencesActivity extends AppCompatActivity {
+
+     private TextView actorTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
         //DrawerActivityOnClick();
+        actorTextView = findViewById(R.id.btn_actors);
         openActors();
         openGenres();
         saveOnClick();
@@ -48,8 +55,42 @@ public class PreferencesActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setSevedActors();
+
+        //showSelectedGenres();
+
+    }
+
+    public void setSevedActors() {
+        List<Actor> actors = AppDataBase.getInstance(PreferencesActivity.this).actorDao().getAllActors();
+        String saveActors = "Actors";
+        for (Actor actor : actors) {
+            saveActors = saveActors + " " + actor.getName() + ",";
+            Log.d(PreferencesActivity.class.getSimpleName(), saveActors);
+
+        }
+        actorTextView.setText(saveActors);
+    }
+
+    public void setSevedGenres() {
+        List<Genre> genres = AppDataBase.getInstance(PreferencesActivity.this).genreDao().getAllGenre();
+        String saveGenres="Genres";
+        TextView tv_gen = findViewById(R.id.tv_gen);
+                for (Genre genre : genres) {
+                    saveGenres = saveGenres + " " + genre.getName() + ",";
+                    Log.d(PreferencesActivity.class.getSimpleName(),saveGenres);
+                }
+                tv_gen.setText(saveGenres);
+    }
+
+
+
+
     private void openActors() {
-        findViewById(R.id.btn_actors).setOnClickListener(new View.OnClickListener() {
+        actorTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PreferencesActivity.this, ActorsActivity.class);

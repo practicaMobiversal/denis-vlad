@@ -76,9 +76,15 @@ public class ActorsAdapter extends RecyclerView.Adapter<ActorsAdapter.ActorViewH
             actorCheckBox = itemView.findViewById(R.id.checkBox);
         }
 
-        public List<Actor> getActorChecked(){
-            return actors;
+
+        public void onBind(Actor actor){
+            actorTextView.setText(actor.getName());
+            ImageUtils.LoadImage(actorImageView.getContext(), actorImageView, BASE_IMAGE_URL + IMAGE_SIZE + actor.getImageview());
+            actorCheckBox.setOnCheckedChangeListener(null);
+            actorCheckBox.setChecked(actor.isSelected());
+            checkListener(actor);
         }
+
 
         private void checkListener(Actor actor) {
             actorCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -88,27 +94,18 @@ public class ActorsAdapter extends RecyclerView.Adapter<ActorsAdapter.ActorViewH
                     // TODO Auto-generated method stub
 
                     if (isChecked) {
-                        getActor(actor);
+                        actorsave.add(actor);
                         Log.d("Actor checked!", actor.getName());
                     } else {
-                        actors.remove(actor);
+                        actorsave.remove(actor);
                         Log.d("Actor unchecked!", actor.getName());
                     }
+                    actor.setSelected(isChecked);
 
                 }
 
             });
         }
 
-        public List<Actor> getActor(Actor actor){
-            actors.add(actor);
-            return actors;
-        }
-
-
-        public void onBind(Actor actor){
-            actorTextView.setText(actor.getName());
-            ImageUtils.LoadImage(actorImageView.getContext(), actorImageView, BASE_IMAGE_URL + IMAGE_SIZE + actor.getImageview());
-        }
     }
 }
