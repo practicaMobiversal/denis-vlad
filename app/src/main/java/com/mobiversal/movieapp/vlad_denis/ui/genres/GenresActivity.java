@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.media.tv.TvContract;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Adapter;
 
 import com.google.gson.internal.bind.ReflectiveTypeAdapterFactory;
@@ -14,6 +15,7 @@ import com.mobiversal.movieapp.vlad_denis.Network.response.ActorsResponse;
 import com.mobiversal.movieapp.vlad_denis.Network.response.GenresResponse;
 import com.mobiversal.movieapp.vlad_denis.ParentActivity;
 import com.mobiversal.movieapp.vlad_denis.R;
+import com.mobiversal.movieapp.vlad_denis.database.AppDataBase;
 import com.mobiversal.movieapp.vlad_denis.model.Actor;
 import com.mobiversal.movieapp.vlad_denis.model.Genre;
 import com.mobiversal.movieapp.vlad_denis.ui.actors.ActorsAdapter;
@@ -76,6 +78,23 @@ public class GenresActivity extends ParentActivity {
             }
         });
     }
+
+     public void getActorsOnClick() {
+        findViewById(R.id.save_genres_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppDataBase.getInstance(GenresActivity.this).genreDao().deleteAll();
+                for (Genre genre : adapter.getGenressave()) {
+                    AppDataBase.getInstance(GenresActivity.this).genreDao().saveGenre(genre);
+                    Log.d(Tag, genre.getName());
+
+                }
+                onBackPressed();
+            }
+
+        });
+     }
+
 }
 
 

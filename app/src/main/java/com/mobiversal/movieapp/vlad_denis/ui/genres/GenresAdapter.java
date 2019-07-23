@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobiversal.movieapp.vlad_denis.R;
+import com.mobiversal.movieapp.vlad_denis.model.Actor;
 import com.mobiversal.movieapp.vlad_denis.model.Genre;
 
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.List;
 public class GenresAdapter extends RecyclerView.Adapter<GenresAdapter.GenreViewHolder>{
 
     List<Genre> genres;
+    List<Genre> genressave;
 
     public GenresAdapter(List<Genre> genres) {
         this.genres = genres;
@@ -46,6 +48,9 @@ public class GenresAdapter extends RecyclerView.Adapter<GenresAdapter.GenreViewH
         return genres.size();
     }
 
+    public List<Genre> getGenressave() {
+        return genressave;
+    }
 
     class GenreViewHolder extends RecyclerView.ViewHolder {
 
@@ -64,4 +69,4 @@ public class GenresAdapter extends RecyclerView.Adapter<GenresAdapter.GenreViewH
             genreTextView.setText(genre.getName());
         }
     }
-}
+        }

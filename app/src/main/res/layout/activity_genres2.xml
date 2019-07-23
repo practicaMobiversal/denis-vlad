@@ -40,7 +40,7 @@
         tools:listitems="@layout/view_actors_item"></androidx.recyclerview.widget.RecyclerView>
 
     <Button
-        android:id="@+id/save_actors_btn"
+        android:id="@+id/save_genres_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

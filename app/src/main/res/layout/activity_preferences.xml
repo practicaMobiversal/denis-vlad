@@ -10,7 +10,7 @@
 
 
 
-    <Button
+    <TextView
         android:id="@+id/btn_actors"
         android:layout_width="300dp"
         android:layout_height="75dp"
@@ -23,7 +23,7 @@
 
         />
 
-    <Button
+    <TextView
         android:id="@+id/genres"
         android:layout_width="332dp"
         android:layout_height="84dp"

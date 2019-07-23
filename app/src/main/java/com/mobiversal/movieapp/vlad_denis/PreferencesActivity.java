@@ -23,9 +23,10 @@ public class PreferencesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
-        DrawerActivityOnClick();
+        //DrawerActivityOnClick();
         openActors();
         openGenres();
+        saveOnClick();
 
     }
 
@@ -76,28 +77,28 @@ public class PreferencesActivity extends AppCompatActivity {
         Log.d(PreferencesActivity.class.getSimpleName(), name);
     }
 
-//    private void saveOnClick() {
-//        findViewById(R.id.save_btn).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                //
-//                //TODO: Move this outside of save function
-//                saveKeywords(getKeywords());
-//                Intent intent = new Intent(PreferencesActivity.this, MoviesActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//    }
-
-    private void DrawerActivityOnClick() {
+    private void saveOnClick() {
         findViewById(R.id.save_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(PreferencesActivity.this, SavedMovies.class);
+                //
+                //TODO: Move this outside of save function
+                saveKeywords(getKeywords());
+                Intent intent = new Intent(PreferencesActivity.this, MoviesActivity.class);
                 startActivity(intent);
             }
         });
     }
+
+//    private void DrawerActivityOnClick() {
+//        findViewById(R.id.save_btn).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Intent intent = new Intent(PreferencesActivity.this, SavedMovies.class);
+//                startActivity(intent);
+//            }
+//        });
+//    }
 }

@@ -15,6 +15,7 @@
             android:name=".ui.movies.main.SavedMovies"
             android:label="@string/title_activity_saved_movies"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".MoviesActivity" />
         <activity android:name=".ui.genres.GenresActivity" />
         <activity android:name=".ui.actors.ActorsActivity" />
         <activity android:name=".GenresActivity" />

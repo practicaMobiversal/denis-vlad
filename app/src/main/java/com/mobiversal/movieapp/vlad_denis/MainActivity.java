@@ -38,7 +38,7 @@ public class MainActivity extends ParentActivity {
         initClickListeners();
         splashScreenTransition();
         //getSupportFragmentManager().beginTransaction().add(R.id.llfrag, new WatchedFragment(), "");
-        //getMovies();
+        getMovies();
         getMoviesFromDataBase();
     }
 

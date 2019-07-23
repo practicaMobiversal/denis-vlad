@@ -6,10 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.mobiversal.movieapp.vlad_denis.Network.RequestManager;
 import com.mobiversal.movieapp.vlad_denis.Network.response.ActorsResponse;
 import com.mobiversal.movieapp.vlad_denis.R;
+import com.mobiversal.movieapp.vlad_denis.database.AppDataBase;
 import com.mobiversal.movieapp.vlad_denis.model.Actor;
 
 import java.util.ArrayList;
@@ -31,7 +33,7 @@ private ActorsAdapter adapter;
         rvactor = findViewById(R.id.rv_actors);
         getPopularP();
         setUpRecycleView();
-
+        getActorsOnClick();
     }
 
     private void setUpRecycleView() {
@@ -67,6 +69,23 @@ private ActorsAdapter adapter;
             public void onFailure(Call<ActorsResponse> call, Throwable t) {
                 Log.d(TAG, "Get actors failure:" + t.getMessage());
             }
+        });
+    }
+
+    public void getActorsOnClick() {
+        findViewById(R.id.save_actors_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppDataBase.getInstance(ActorsActivity.this).actorDao().deleteAll();
+                for (Actor actor: adapter.getSelectedActors()) {
+                    AppDataBase.getInstance(ActorsActivity.this).actorDao().saveActor(actor);
+                    Log.d(TAG, actor.getName());
+
+                }
+
+                onBackPressed();
+            }
+
         });
     }
 

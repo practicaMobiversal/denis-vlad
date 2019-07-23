@@ -20,6 +20,7 @@ import com.mobiversal.movieapp.vlad_denis.R;
 import com.mobiversal.movieapp.vlad_denis.model.Actor;
 import com.mobiversal.movieapp.vlad_denis.utils.ImageUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.mobiversal.movieapp.vlad_denis.utils.Constants.BASE_IMAGE_URL;
@@ -28,6 +29,7 @@ import static com.mobiversal.movieapp.vlad_denis.utils.Constants.IMAGE_SIZE;
 public class ActorsAdapter extends RecyclerView.Adapter<ActorsAdapter.ActorViewHolder>{
 
     List<Actor> actors;
+    List<Actor> actorsave = new ArrayList<>();
 
     public ActorsAdapter(List<Actor> actors) {
         this.actors = actors;
@@ -53,6 +55,10 @@ public class ActorsAdapter extends RecyclerView.Adapter<ActorsAdapter.ActorViewH
     @Override
     public int getItemCount() {
         return actors.size();
+    }
+
+    public List<Actor> getSelectedActors() {
+        return actorsave;
     }
 
 

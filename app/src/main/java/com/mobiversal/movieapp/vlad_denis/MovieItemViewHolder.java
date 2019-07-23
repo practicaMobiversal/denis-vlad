@@ -16,7 +16,7 @@ public class MovieItemViewHolder extends RecyclerView.ViewHolder {
     public MovieItemViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        this.tvId = itemView.findViewById(R.id.tv_id);
+        this.tvId = itemView.findViewById(R.id.tv_title);
         this.tvTitle = itemView.findViewById(R.id.tv_title);
     }
 
