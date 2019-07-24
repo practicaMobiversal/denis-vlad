@@ -18,4 +18,11 @@ public interface ApiClient {
 
     @GET("genre/movie/list")
     Call<GenresResponse> getGenres(@Query("api_key") String apiKey);
+
+    @GET("discover/movie")
+    Call<MoviesResponse>getDiscoveredMovies(@Query("api_key")String apikey, @Query("with_cast") String cast, @Query("with_genres")String genres);
+
+    @GET("search/movie")
+    Call<MoviesResponse>getSearchMovies(@Query("api_key") String apiKey, @Query("query")String query);
+
 }

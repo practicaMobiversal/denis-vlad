@@ -35,66 +35,12 @@ public class MainActivity extends ParentActivity {
         setContentView(R.layout.activity_main);
 
 
-        initClickListeners();
+
         splashScreenTransition();
-        //getSupportFragmentManager().beginTransaction().add(R.id.llfrag, new WatchedFragment(), "");
-        getMovies();
-        getMoviesFromDataBase();
-    }
 
-    private void initClickListeners() {
-        //findViewById(R.id.Favorites).setOnClickListener(new View.OnClickListener() {
-        //  @Override
-        //  public void onClick(View view) {
-        //   openSavedMoviesScreen();
-        // }
-        //});
 
     }
 
-    private void openSavedMoviesScreen() {
-        Intent intent = new Intent(this, SavedMoviesScreen.class);
-        startActivity(intent);
-    }
-
-
-
-    private void getMovies() {
-
-        Call<MoviesResponse> request = RequestManager.getInstance().getTopRatedMovies();
-        request.enqueue(new Callback<MoviesResponse>() {
-            @Override
-            public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
-
-                AppDataBase.getInstance(MainActivity.this)
-                        .movieDao()
-                        .deleteAll();
-
-                List<Movie> movies = response.body().getResults();
-
-                for (Movie movie : movies) {
-                    Log.d(TAG, movie.getTitle());
-                    AppDataBase.getInstance(MainActivity.this)
-                            .movieDao()
-                            .saveMovie(movie);
-                }
-                Log.d(TAG, "Get movies success: " + response.body().getResults().toString());
-            }
-
-            @Override
-            public void onFailure(Call<MoviesResponse> call, Throwable t) {
-                Log.d(TAG, "Get movies failure:" + t.getMessage());
-            }
-
-
-        });
-    }
-    private void getMoviesFromDataBase() {
-        List<Movie> movies = AppDataBase.getInstance(this).movieDao().getAllMovies();
-        for (Movie movie : movies) {
-            Log.d(TAG, movie.getTitle());
-        }
-    }
     private void splashScreenTransition() {
 
         new Handler().postDelayed(new Runnable() {

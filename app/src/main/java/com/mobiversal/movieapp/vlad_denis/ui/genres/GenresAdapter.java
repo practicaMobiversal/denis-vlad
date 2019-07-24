@@ -22,15 +22,22 @@ import java.util.List;
 public class GenresAdapter extends RecyclerView.Adapter<GenresAdapter.GenreViewHolder>{
 
     List<Genre> genres;
-    List<Genre> genressave = new ArrayList<>();
-
-    public GenresAdapter(List<Genre> genres) {
-        this.genres = genres;
-    }
+    public List<Genre> selectedGenres;
 
     public void setGenres(List<Genre> genres) {
         this.genres = genres;
     }
+
+    public List<Genre> getSelectedGenres() {
+        return selectedGenres;
+    }
+
+    public GenresAdapter(List<Genre> genres) {
+
+        this.genres = genres;
+        selectedGenres = new ArrayList<>();
+    }
+
 
     @NonNull
     @Override
@@ -38,12 +45,14 @@ public class GenresAdapter extends RecyclerView.Adapter<GenresAdapter.GenreViewH
         Context context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.view_genres_item, parent, false);
         return new GenreViewHolder(view);
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull GenreViewHolder holder, int position) {
         holder.onBind(genres.get(position));
         getItemCount();
+
     }
 
     @Override
@@ -51,44 +60,42 @@ public class GenresAdapter extends RecyclerView.Adapter<GenresAdapter.GenreViewH
         return genres.size();
     }
 
-        public List<Genre> getGenressave() {
-            return genressave;
-        }
+    class GenreViewHolder extends RecyclerView.ViewHolder {
 
-        class GenreViewHolder extends RecyclerView.ViewHolder {
-
-        TextView genreTextView;
+        TextView genre;
         CheckBox genreCheckBox;
+
 
         public GenreViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            genreTextView = itemView.findViewById(R.id.tv_gen);
+            genre = itemView.findViewById(R.id.tv_gen);
             genreCheckBox = itemView.findViewById(R.id.checkBox4);
+
         }
 
-            public void onBind(Genre genre){
-                genreTextView.setText(genre.getName());
-                genreCheckBox.setOnCheckedChangeListener(null);
-                genreCheckBox.setChecked(genre.isSelected());
-                checkListener(genre);
-            }
 
-        private void checkListener(Genre genre) {
-            genreCheckBox.setOnCheckedChangeListener((compoundButton, isChecked) -> {
-                // TODO Auto-generate method stub
+        public void onBind(Genre genreItem) {
+            genre.setText(genreItem.getName());
+            genreCheckBox.setOnCheckedChangeListener(null);
+            setCheckboxOnThick(genreItem);
+            genreCheckBox.setChecked(genreItem.isSelected());
+
+
+        }
+
+        private void setCheckboxOnThick(Genre genreItem) {
+            genreCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
 
                 genre.setSelected(isChecked);
-
                 if (isChecked) {
-                    genressave.add(genre);
-                    Log.d("Genre checked",genre.getName());
+                    selectedGenres.add(genreItem);
+                    Log.d("Genre ID", genreItem.getName());
                 } else {
-                    genressave.remove(genre);
-                    Log.d("Genre unchecked",genre.getName());
+
+                    selectedGenres.remove(genreItem);
+                    Log.d("Genres removed", genreItem.getName());
                 }
             });
         }
-
     }
-        }
+}

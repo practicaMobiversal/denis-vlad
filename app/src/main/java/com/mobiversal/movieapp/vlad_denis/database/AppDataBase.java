@@ -15,7 +15,7 @@ import com.mobiversal.movieapp.vlad_denis.model.Genre;
 import com.mobiversal.movieapp.vlad_denis.model.Keyword;
 import com.mobiversal.movieapp.vlad_denis.model.Movie;
 
-@Database(entities = {Movie.class, Keyword.class, Genre.class, Actor.class}, version = 2, exportSchema = false)
+@Database(entities = {Movie.class, Keyword.class, Genre.class, Actor.class}, version = 3, exportSchema = false)
 public abstract class AppDataBase extends RoomDatabase {
 
     private static AppDataBase instance;

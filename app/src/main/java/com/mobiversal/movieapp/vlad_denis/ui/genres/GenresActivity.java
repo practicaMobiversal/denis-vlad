@@ -85,7 +85,7 @@ public class GenresActivity extends ParentActivity {
             @Override
             public void onClick(View view) {
                 AppDataBase.getInstance(GenresActivity.this).genreDao().deleteAll();
-                for (Genre genre : adapter.getGenressave()) {
+                for (Genre genre : adapter.getSelectedGenres()) {
                     AppDataBase.getInstance(GenresActivity.this).genreDao().saveGenre(genre);
                     Log.d(Tag, genre.getName());
 

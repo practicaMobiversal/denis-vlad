@@ -14,6 +14,18 @@ public class Movie {
     @SerializedName("title")
     @ColumnInfo(name = "title")
     private String title;
+    @ColumnInfo(name = "image")
+    @SerializedName("poster_path")
+    private String imageUrl;
+
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public String getTitle() {
         return title;

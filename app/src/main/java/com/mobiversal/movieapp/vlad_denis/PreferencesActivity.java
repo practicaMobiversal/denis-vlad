@@ -59,6 +59,7 @@ public class PreferencesActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setSevedActors();
+        setSevedGenres();
 
         //showSelectedGenres();
 
@@ -78,7 +79,7 @@ public class PreferencesActivity extends AppCompatActivity {
     public void setSevedGenres() {
         List<Genre> genres = AppDataBase.getInstance(PreferencesActivity.this).genreDao().getAllGenre();
         String saveGenres="Genres";
-        TextView tv_gen = findViewById(R.id.tv_gen);
+        TextView tv_gen = findViewById(R.id.genres);
                 for (Genre genre : genres) {
                     saveGenres = saveGenres + " " + genre.getName() + ",";
                     Log.d(PreferencesActivity.class.getSimpleName(),saveGenres);
@@ -126,7 +127,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 //
                 //TODO: Move this outside of save function
                 saveKeywords(getKeywords());
-                Intent intent = new Intent(PreferencesActivity.this, MoviesActivity.class);
+                Intent intent = new Intent(PreferencesActivity.this, DrawerActivity.class);
                 startActivity(intent);
             }
         });

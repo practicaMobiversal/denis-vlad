@@ -30,6 +30,17 @@ public class DrawerActivity extends AppCompatActivity {
         showFirstFragment();
     }
 
+
+    private void showFirstFragment() {
+        switchFragment(new FirstFragment());
+    }
+
+    private void showSecondFragment() {
+        switchFragment(new SecondFragment());
+    }
+
+
+
     private void initToolbar () {
         drawerLayout = findViewById(R.id.dl_drawer);
         Toolbar toolbar = findViewById(R.id.tb_toolbar);
@@ -65,13 +76,7 @@ public class DrawerActivity extends AppCompatActivity {
     }
 
     }
-    private void showFirstFragment() {
-        switchFragment(new FirstFragment());
-    }
 
-    private void showSecondFragment() {
-        switchFragment(new SecondFragment());
-    }
 
     private void switchFragment(Fragment fragment) {
         getSupportFragmentManager()

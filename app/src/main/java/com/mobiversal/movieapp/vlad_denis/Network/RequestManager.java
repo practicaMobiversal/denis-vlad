@@ -45,5 +45,8 @@ public class RequestManager {
         return apiClient.getPopularActors(API_KEY);
     }
    public Call<GenresResponse> getGenres() {return apiClient.getGenres(API_KEY);}
+    public Call<MoviesResponse> getDiscoveredMovies(String cast, String genres) {return apiClient.getDiscoveredMovies(API_KEY,cast,genres);}
+        public Call<MoviesResponse> getSearchMovies(String query) {return apiClient.getSearchMovies(API_KEY,query); }
+
 
 }

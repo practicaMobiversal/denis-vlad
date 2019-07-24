@@ -27,5 +27,5 @@ public abstract class MoviesLoadThread extends AsyncTask<Void, Void, List<Movie>
         super.onPostExecute(movies);
         onDone(movies);
     }
-    abstract void onDone(@Nullable List<Movie> movies);
+    protected abstract void onDone(@Nullable List<Movie> movies);
 }
