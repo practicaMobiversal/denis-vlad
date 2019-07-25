@@ -16,8 +16,13 @@ public interface MovieDao {
     List<Movie> getAllMovies();
 
     @Insert
-      public long saveMovie(Movie movie);
+      public void saveFavoriteMovie(Movie movie);
+
+
       @Query("DELETE FROM movie")
       public void deleteAll();
+
+      @Insert
+    public void saveWatchedMovies(Movie movie);
 
     }

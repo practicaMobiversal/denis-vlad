@@ -5,6 +5,9 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 @Entity(tableName = "movie")
 public class Movie {
      @PrimaryKey
