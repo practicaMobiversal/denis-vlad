@@ -31,17 +31,15 @@ public class MoviesActivity extends ParentActivity {
 
         rvMovies.setLayoutManager(lln);
 
-        new MoviesLoadThread(this) {
-            @Override
-            public void onDone(@Nullable List<Movie> movies) {
-                MoviesAdapter moviesAdapter = new MoviesAdapter(movies);
-                rvMovies.setAdapter(moviesAdapter);
-            }
-        }.execute(null,null,null);
 
         List<Movie> movies = AppDataBase.getInstance(this).movieDao().getAllMovies();
 
-        MoviesAdapter moviesAdapter = new MoviesAdapter(movies);
+        MoviesAdapter moviesAdapter = new MoviesAdapter(movies, new ItemClickListener() {
+            @Override
+            public void onItemClick(Movie movie) {
+
+            }
+        });
         rvMovies.setAdapter(moviesAdapter);
     }
 }

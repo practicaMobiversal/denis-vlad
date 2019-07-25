@@ -14,6 +14,7 @@ import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MovieItemViewHolder> {
 private List<Movie> movies;
+private ItemClickListener listener;
 
     public List<Movie> getMovies() {
         return movies;
@@ -23,8 +24,9 @@ private List<Movie> movies;
         this.movies = movies;
     }
 
-    public MoviesAdapter(List<Movie> movies){
+    public MoviesAdapter(List<Movie> movies,ItemClickListener listener){
     this.movies = movies;
+    this.listener = listener;
 }
 
     @NonNull
@@ -39,11 +41,18 @@ private List<Movie> movies;
     public void onBindViewHolder(@NonNull MovieItemViewHolder holder, int position) {
     Movie movie = this.movies.get(position);
     holder.onBind(movie);
+    holder.itemView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            listener.onItemClick(movie);
+        }
+    });
 
     }
 
     @Override
     public int getItemCount() {
+
         return movies.size();
     }
 }

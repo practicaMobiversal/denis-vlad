@@ -40,6 +40,13 @@ public class DrawerActivity extends AppCompatActivity {
     }
 
 
+    private void switchFragment(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .replace(R.id.fl_container, fragment)
+                .commit();
+    }
 
     private void initToolbar () {
         drawerLayout = findViewById(R.id.dl_drawer);
@@ -57,6 +64,7 @@ public class DrawerActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(menuItem -> {
+            handleNavigation(menuItem.getItemId());
             closeDrawer();
             return true;
         });
@@ -78,11 +86,5 @@ public class DrawerActivity extends AppCompatActivity {
     }
 
 
-    private void switchFragment(Fragment fragment) {
-        getSupportFragmentManager()
-                .beginTransaction()
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .replace(R.id.fl_container, fragment)
-                .commit();
-    }
+
 }

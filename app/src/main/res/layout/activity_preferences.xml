@@ -15,7 +15,7 @@
         android:layout_width="300dp"
         android:layout_height="75dp"
         android:background="#FFFFFF"
-        android:text="Actors"
+        android:text="ACTORS"
         android:textSize="20dp"
         android:textColor="#0000A0"
         app:layout_constraintBottom_toTopOf="@id/genres"
@@ -27,7 +27,7 @@
         android:id="@+id/genres"
         android:layout_width="300dp"
         android:layout_height="75dp"
-        android:text="Genres"
+        android:text="GENRES"
         android:textSize="20dp"
         android:textColor="#0000A0"
         android:background="#FFFFFF"
@@ -50,7 +50,7 @@
 
     <TextView
         android:id="@+id/preferences"
-        android:layout_width="160dp"
+        android:layout_width="185dp"
         android:layout_height="35dp"
         android:layout_marginTop="4dp"
         android:text="PREFERENCES"
@@ -65,7 +65,7 @@
         android:id="@+id/save_btn"
         android:layout_width="86dp"
         android:layout_height="52dp"
-        android:text="Save"
+        android:text="SAVE"
         android:textAllCaps="true"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

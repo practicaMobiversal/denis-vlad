@@ -1,6 +1,7 @@
 package com.mobiversal.movieapp.vlad_denis.ui;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,12 +9,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.SearchView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
+import com.mobiversal.movieapp.vlad_denis.ItemClickListener;
 import com.mobiversal.movieapp.vlad_denis.MoviesAdapter;
 import com.mobiversal.movieapp.vlad_denis.MoviesLoadThread;
 import com.mobiversal.movieapp.vlad_denis.Network.ApiClient;
@@ -25,6 +29,7 @@ import com.mobiversal.movieapp.vlad_denis.database.AppDataBase;
 import com.mobiversal.movieapp.vlad_denis.model.Actor;
 import com.mobiversal.movieapp.vlad_denis.model.Genre;
 import com.mobiversal.movieapp.vlad_denis.model.Movie;
+import com.mobiversal.movieapp.vlad_denis.ui.movies.main.DetailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +46,8 @@ public class FirstFragment extends Fragment {
 
     MoviesAdapter moviesAdapter;
     List<Movie> movies;
-  private   RecyclerView rvMovies;
+    private   RecyclerView rvMovies;
+    SearchView svMovie;
 
     public FirstFragment() {
         // Required empty public constructor
@@ -58,13 +64,23 @@ public class FirstFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        svMovie = view.findViewById(R.id.s_movies);
         this.movies = new ArrayList<>();
         this.rvMovies = view.findViewById(R.id.rv_movies);
-        this.moviesAdapter = new MoviesAdapter(movies);
+        this.moviesAdapter = new MoviesAdapter(movies, new ItemClickListener() {
+            @Override
+            public void onItemClick(Movie movie) {
+                Intent intent = new Intent(getActivity(), DetailsActivity.class);
+                intent.putExtra("EXTRA_SESSION_ID", movie.getId());
+                startActivity(intent);
+                Log.d("Denis","s-a dat click pe filmul"+ String.valueOf(movie.getId()));
+            }
+        });
         movies = new ArrayList<>();
 
         setupRecycleView();
         getMovieList();
+        searchTextListener();
 
 
     }
@@ -100,6 +116,7 @@ public class FirstFragment extends Fragment {
     }
 
 
+
     private void getMovieList() {
         Call<MoviesResponse> request = RequestManager.getInstance().getDiscoveredMovies(getActorsFromDb(),getGenresFromDb());
         request.enqueue(new Callback<MoviesResponse>() {
@@ -107,7 +124,7 @@ public class FirstFragment extends Fragment {
             public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
 
 
-               List<Movie> movies = response.body().getResults();
+                List<Movie> movies = response.body().getResults();
                 if (movies != null) {
                     moviesAdapter.setMovies(movies);
                     moviesAdapter.notifyDataSetChanged();
@@ -126,6 +143,56 @@ public class FirstFragment extends Fragment {
         });
     }
 
+    private String getQuery(){
+        SearchView queries = getActivity().findViewById(R.id.s_movies);
+        String query = String.valueOf(queries.getQuery());
+        return query;
+    }
+
+    public void searchTextListener() {
+        svMovie.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                getSearchedList();
+                return true;
+            }
+        });
+    }
+
+
+    private void getSearchedList() {
+        Call<MoviesResponse> request = RequestManager.getInstance().getSearchMovies(getQuery());
+        if(getQuery().length() < 1)
+            return;
+
+        request.enqueue(new Callback<MoviesResponse>() {
+            @Override
+            public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
+
+
+                List<Movie> movies = response.body().getResults();
+                if (movies != null) {
+                    moviesAdapter.setMovies(movies);
+                    moviesAdapter.notifyDataSetChanged();
+                }
+                for (Movie movie : movies) {
+                    Log.d("MovieList", movie.getTitle());
+
+                }
+                Log.d("MovieList", "Get actors success" + response.body().getResults().toString());
+            }
+
+            @Override
+            public void onFailure(Call<MoviesResponse> call, Throwable t) {
+                Log.d("MovieList", "Get actors failure:" + t.getMessage());
+            }
+        });
+    }
 
 
 

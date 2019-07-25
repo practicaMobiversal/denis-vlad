@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.actors.ActorsActivity"
-    android:background="@android:color/holo_green_light">
+    android:background="#FFFF00">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tb_actors"
